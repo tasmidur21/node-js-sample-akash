@@ -20,7 +20,7 @@ jobs:
         run: |
           docker buildx create --use
           docker buildx inspect default --bootstrap
-          docker buildx build --file Dockerfile --tag akashmore947/my-app-image:latest .
+          docker buildx build -t akashmore947/my-app-image:latest .
 
       - name: Push Docker image to Docker Hub
         run: |
