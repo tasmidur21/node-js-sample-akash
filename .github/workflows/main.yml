@@ -1,0 +1,43 @@
+name: Build, Push, and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: |
+          docker buildx create --use
+          docker buildx inspect default --bootstrap
+          docker buildx build --file Dockerfile --tag akashmore/my-app-image:latest .
+
+      - name: Push Docker image to Docker Hub
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username yourusername --password-stdin
+          docker push yourusername/your-image-name:latest
+
+      - name: Update manifest file
+        run: |
+          # Assuming you have a manifest file named k8s.yaml
+          yq eval -i '.spec.containers[0].image = "akashmore947/my-app-image:latest"' manifest.yaml
+
+      - name: Deploy to Minikube
+        run: |
+          # Assuming you have Minikube installed and running
+          kubectl apply -f manifest.yaml
+          
+      - name: Test service URLs
+        run: |
+            minikube service list 
+            minikube service my-deployment --url
