@@ -51,11 +51,16 @@ jobs:
         run: |
           # Assuming you have a manifest file named k8s.yaml
           yq eval -i '.spec.containers[0].image = "akashmore947/my-app-image:latest"' deployment.yml
-
+     
+      - name: Test service URLs
+        run: |
+          minikube kubectl -- get pods -A -o wide
+  
       - name: Deploy to Minikube
         run: |
           # Assuming you have Minikube installed and running
           minikube kubectl -- apply -f deployment.yml
+
           
       - name: Test service URLs
         run: |
