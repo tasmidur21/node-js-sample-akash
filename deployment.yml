@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app
+      app: my-deployment 
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-deployment
     spec:
       containers:
         -name: my-container 
         image: akashmore947/my-app-image:latest
         port:
-        - containerPort: 8000
+          - containerPort: 8000
