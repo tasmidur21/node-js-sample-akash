@@ -16,9 +16,8 @@ spec:
         -name: my-app-container 
         image: akashmore947/my-app-image:latest
         port:
-          - containerPort: 8000
-          
- ------       
+        - containerPort: 8000
+                
 # Service YAML
 apiVersion: v1
 kind: Service
