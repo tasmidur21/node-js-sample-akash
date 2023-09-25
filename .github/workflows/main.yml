@@ -1,4 +1,4 @@
-name: Build, Push, and Deploy
+  name: Build, Push, and Deploy
 
 on:
   push:
@@ -32,8 +32,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker images
+          
+      - name: Set up Kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: latest    
 
-      - name: Build Docker image
+      - name: Get namespaces
         run: |
           kubectl get namespace
 
