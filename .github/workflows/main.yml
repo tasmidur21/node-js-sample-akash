@@ -9,6 +9,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG_SECRET }}
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,9 +19,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: Configure kubectl
+        run: |
+          echo "$KUBECONFIG" > kubeconfig.yaml
+          kubectl --kubeconfig=kubeconfig.yaml get pods
+      
       - name: Set up Minikube
         run: |
-          minikube start 
           minikube kubectl -- get pods --all-namespaces
           minikube addons enable ingress
           minikube addons list        
