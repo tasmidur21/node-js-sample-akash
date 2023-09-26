@@ -1,0 +1,16 @@
+apiVersion: app/v1
+kind: CustomResourceDefinition
+metadata:
+  name: my-deployment
+spec:
+  group: example.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+  scope: Namespaced
+  names:
+    plural: my-deployments
+    singular: my-deployment
+    kind: my-deployment
+

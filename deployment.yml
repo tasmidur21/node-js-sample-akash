@@ -1,4 +1,5 @@
-apiVersion: app/v1
+# Deployment YAML
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-deployment
@@ -13,19 +14,20 @@ spec:
         app: my-deployment
     spec:
       containers:
-        -name: my-app-container 
-        image: akashmore947/my-app-image:latest
-        port:
-        - containerPort: 8000
-
-
-apiVersion: v1
+        - name: my-app-container
+          image: akashmore947/my-app-image:latest
+          ports:
+            - containerPort: 8000
+            
+---
+# Service YAML
+apiVersion: v1 
 kind: Service
 metadata:
   name: my-service
 spec:
   selector:
-    app: my-app
+    app: my-deployment
   ports:
     - protocol: TCP
       port: 80
