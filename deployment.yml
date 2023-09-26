@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Deployment YAML
-=======
->>>>>>> 2f9994fd962b78ac9e1620ce2672ba164a62c1d1
 apiVersion: apps/v1
 kind: Deployment
 metadata:
