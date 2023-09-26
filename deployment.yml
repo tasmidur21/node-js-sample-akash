@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: my-deployment
@@ -13,7 +13,6 @@ spec:
         app: my-deployment
     spec:
       containers:
-
         - name: my-app-container
           image: akashmore947/my-app-image:latest
           ports:
@@ -33,7 +32,7 @@ spec:
       port: 80
       targetPort: 8000
   type: NodePort
-        -name: my-deployment 
+      - name: my-deployment 
         image: akashmore947/my-app-image:latest
         port:
           - containerPort: 8000
