@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # Deployment YAML
+=======
+>>>>>>> 2f9994fd962b78ac9e1620ce2672ba164a62c1d1
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,13 +10,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-deployment
+      app: my-deployment 
   template:
     metadata:
       labels:
         app: my-deployment
     spec:
       containers:
+
         - name: my-app-container
           image: akashmore947/my-app-image:latest
           ports:
@@ -33,3 +37,7 @@ spec:
       port: 80
       targetPort: 8000
   type: NodePort
+        -name: my-deployment 
+        image: akashmore947/my-app-image:latest
+        port:
+          - containerPort: 8000
