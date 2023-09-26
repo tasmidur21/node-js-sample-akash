@@ -32,7 +32,3 @@ spec:
       port: 80
       targetPort: 8000
   type: NodePort
-      - name: my-deployment 
-        image: akashmore947/my-app-image:latest
-        port:
-          - containerPort: 8000
