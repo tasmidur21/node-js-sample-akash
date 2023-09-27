@@ -19,7 +19,7 @@ jobs:
       - name: Configure kubectl
         run: |
           mkdir ${HOME}/.kube
-          echo ${{ secrets.KUBECONFIG_SECRET }} | base64 --decode > ${HOME}/.kube/config
+          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           
       - name: Use context     
         run: kubectl config use-context minikube 
