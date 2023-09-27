@@ -8,9 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
-    env:
-      KUBECONFIG: ${{ secrets.KUBECONFIG_SECRET }}
       
     steps:
       - name: Checkout code
@@ -21,9 +18,14 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          echo "$KUBECONFIG" > kubeconfig.yaml
-          kubectl --kubeconfig=kubeconfig.yaml get pods
-      
+          mkdir: ${HOME}/.kube
+          echo ${{ secrets.KUBECONFIG_SECRET }} | base64 --decode > ${HOME}/.kube/config
+          cat ${HOME}/.kube/config
+          
+      - name: Use context     
+        run: kubectl config use-context minikube 
+
+
       - name: Set up Minikube
         run: |
           minikube kubectl -- get pods --all-namespaces
