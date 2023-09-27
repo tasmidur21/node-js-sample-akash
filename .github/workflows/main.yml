@@ -27,6 +27,7 @@ jobs:
 
       - name: Set up Minikube
         run: |
+          minikube start
           minikube kubectl -- get pods --all-namespaces
           minikube addons enable ingress
           minikube addons list        
