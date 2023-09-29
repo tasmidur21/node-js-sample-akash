@@ -2,6 +2,7 @@ apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: my-deployment
+  namespace: newapp
 spec:
   replicas: 1
   selector:
@@ -18,18 +19,3 @@ spec:
           imagePullPolicy: Always 
           ports:
             - containerPort: 8000
-
----
-# Service YAML
-apiVersion: v1 
-kind: Service
-metadata:
-  name: my-service
-spec:
-  selector:
-    app: Node.js
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8000
-  type: NodePort
