@@ -32,5 +32,5 @@ jobs:
       - name: Update manifest file
         run: |
           # Assuming you have a manifest file named k8s.yaml
-          yq eval -i '.spec.containers[0].image = "akashmore947/my-app-image:latest"' deployments/deployment.yml
+          yq eval '.spec.containers[0].image = "akashmore947/my-app-image:latest"' -i deployments/deployment.yml
      
