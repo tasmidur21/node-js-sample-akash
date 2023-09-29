@@ -18,18 +18,3 @@ spec:
           imagePullPolicy: Always 
           ports:
             - containerPort: 8000
-            
----
-# Service YAML
-apiVersion: v1 
-kind: Service
-metadata:
-  name: my-service
-spec:
-  selector:
-    app: my-deployment
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8000
-  type: NodePort
