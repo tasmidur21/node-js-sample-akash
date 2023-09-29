@@ -15,9 +15,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-
-      - name: Use context
-        run: kubectl config get-contexts   
+ 
 
       - name: Build Docker image
         run: |
