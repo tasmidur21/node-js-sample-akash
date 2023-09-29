@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: akashmore947/my-app-image:latest
+          image: akashmore947/my-app-image:replacewithlatesttag
           ports:
             - containerPort: 8000
             
