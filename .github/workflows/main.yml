@@ -39,7 +39,8 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@gmail.com"
           yq eval '.spec.template.spec.containers[0].image = "akashmore947/my-app-image:${{ env.GITHUB_BRANCH }}"' -i deployments/deployment.yml
-          
+
+          git pull
           git add .
                  
           git commit -m "updating newer image"
