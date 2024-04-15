@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: tasmidur/my-app-image:master-8089d64bab528506f465d74bcbb2652b16185a03
+          image: tasmidur/my-app-image:master-b2a65c0451812506bc0956a8f3a6ca2f7c32257e
           imagePullPolicy: Always
           ports:
             - containerPort: 8019
